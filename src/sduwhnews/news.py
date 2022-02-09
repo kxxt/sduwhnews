@@ -4,3 +4,6 @@ class News:
         self.url = url
         self.date = date
 
+    def __repr__(self):
+        return f'{self.title} @ {self.date}\n{self.url}'
+
