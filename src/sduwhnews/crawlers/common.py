@@ -19,7 +19,7 @@ class BaseCrawler:
 
     @property
     def errors(self):
-        return self.__errors
+        return iter(self.__errors)
 
     def _add_error(self, error):
         self.__errors.append(error)
