@@ -1,5 +1,6 @@
 class News:
-    def __init__(self, title, url, time):
+    def __init__(self, title, url, date):
         self.title = title
         self.url = url
-        self.time = time
+        self.date = date
+
