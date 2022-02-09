@@ -27,6 +27,6 @@ class NewsCrawler(BaseCrawler):
                         url = SDUWH_NEWS_ROOT_URL + url
                     date = span.text
                     news = News(title, url, date)
-                    self.data[url] = news
+                    self.data.append(news)
         else:
             print(f'Failed to get {self.index_url}')

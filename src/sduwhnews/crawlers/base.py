@@ -1,6 +1,6 @@
 class BaseCrawler:
     def __init__(self):
-        self.data = {}
+        self.data = []
         self.initialized = False
         pass
 
