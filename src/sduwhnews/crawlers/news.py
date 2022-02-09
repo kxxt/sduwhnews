@@ -1,5 +1,5 @@
 import requests
-from .base import BaseCrawler
+from .common import BaseCrawler
 from ..constants import SDUWH_NEWS_URL, SDUWH_NEWS_ROOT_URL
 from ..news import News
 from bs4 import BeautifulSoup

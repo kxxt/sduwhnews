@@ -1,5 +1,5 @@
 import requests
-from .base import BaseCrawler
+from .common import BaseCrawler
 from ..constants import SDUWH_MATH_URL_NEWS, SDUWH_MATH_URL_UNDERGRADUATE, \
     SDUWH_MATH_URL_ANNOUNCEMENT
 from ..news import News
