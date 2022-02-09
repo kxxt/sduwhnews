@@ -3,6 +3,7 @@ SDUWH_NEWS_ROOT_URL = "https://xinwen.wh.sdu.edu.cn/"
 SDUWH_NEWS_URL = SDUWH_NEWS_ROOT_URL + 'xyyw.htm'
 SDUWH_OFFICE_OF_EDUADMIN_ROOT_URL = 'https://jwc.wh.sdu.edu.cn/'
 SDUWH_OFFICE_OF_EDUADMIN_URL = SDUWH_OFFICE_OF_EDUADMIN_ROOT_URL + '/gztz.htm'
-
-
-
+SDUWH_MATH_ROOT_URL = 'https://math.wh.sdu.edu.cn/'
+SDUWH_MATH_URL_UNDERGRADUATE = SDUWH_MATH_ROOT_URL + 'rcpy/bkspy/tzgg1.htm'
+SDUWH_MATH_URL_ANNOUNCEMENT = SDUWH_MATH_ROOT_URL + 'tzgg.htm'
+SDUWH_MATH_URL_NEWS = SDUWH_MATH_ROOT_URL + 'xyxw.htm'
