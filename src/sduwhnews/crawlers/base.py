@@ -2,6 +2,7 @@ class BaseCrawler:
     def __init__(self):
         self.data = []
         self.initialized = False
+        self.__errors = []
         pass
 
     def crawl(self):
@@ -15,3 +16,11 @@ class BaseCrawler:
 
     def __len__(self):
         return len(self.data)
+
+    @property
+    def errors(self):
+        return self.__errors
+
+    def __add_error(self, error):
+        self.__errors.append(error)
+
