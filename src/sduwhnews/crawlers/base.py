@@ -12,3 +12,6 @@ class BaseCrawler:
             self.crawl()
             self.initialized = True
         return iter(self.data)
+
+    def __len__(self):
+        return len(self.data)
