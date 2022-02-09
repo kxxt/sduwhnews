@@ -32,7 +32,7 @@
 安装依赖
 
 ```bash
-poetry init
+poetry install
 ```
 
 欢迎提交 PR!
