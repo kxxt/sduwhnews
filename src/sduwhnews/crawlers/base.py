@@ -24,3 +24,8 @@ class BaseCrawler:
     def _add_error(self, error):
         self.__errors.append(error)
 
+    def _add_index_error(self, url):
+        self._add_error(f"FATAL: Failed to get {url}")
+
+    def _add_item_error(self, url,item):
+        self._add_error(f"WARN: one failed item on {url}: {str(item)}")
