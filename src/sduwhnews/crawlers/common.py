@@ -1,3 +1,6 @@
+from itertools import chain
+
+
 class BaseCrawler:
     def __init__(self):
         self.data = []
@@ -27,5 +30,28 @@ class BaseCrawler:
     def _add_index_error(self, url):
         self._add_error(f"FATAL: Failed to get {url}")
 
-    def _add_item_error(self, url,item):
+    def _add_item_error(self, url, item):
         self._add_error(f"WARN: one failed item on {url}: {str(item)}")
+
+
+class AggregatedCrawler(BaseCrawler):
+    def __init__(self, *crawlers):
+        super().__init__()
+        self.crawlers = crawlers
+
+    def crawl(self):
+        for crawler in self.crawlers:
+            crawler.crawl()
+
+    def __iter__(self):
+        if not self.initialized:
+            self.crawl()
+            self.initialized = True
+        return chain(*(crawler for crawler in self.crawlers))
+
+    def __len__(self):
+        return sum(len(crawler) for crawler in self.crawlers)
+
+    @property
+    def errors(self):
+        return chain(*(crawler.errors for crawler in self.crawlers))
