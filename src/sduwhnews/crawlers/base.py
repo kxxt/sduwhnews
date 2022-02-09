@@ -21,6 +21,6 @@ class BaseCrawler:
     def errors(self):
         return self.__errors
 
-    def __add_error(self, error):
+    def _add_error(self, error):
         self.__errors.append(error)
 
