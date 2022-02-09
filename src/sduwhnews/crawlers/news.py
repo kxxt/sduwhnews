@@ -1,0 +1,30 @@
+import requests
+from .base import BaseCrawler
+from ..constants import SDUWH_NEWS_URL
+from ..news import News
+from bs4 import BeautifulSoup
+
+
+class NewsCrawler(BaseCrawler):
+    def __init__(self):
+        super().__init__()
+        self.index_url = SDUWH_NEWS_URL
+
+    def crawl(self):
+        response = requests.get(self.index_url)
+        if response.status_code == 200:
+            response.encoding = 'utf-8'
+            html = response.text
+            soup = BeautifulSoup(html, 'html.parser')
+            news_list = soup.select('.n_newslist li')
+            for news in news_list:
+                a = news.find('a')
+                span = news.find('span')
+                if a and span:
+                    title = a.attrs['title']
+                    url = a.attrs['href']
+                    date = span.text
+                    news = News(title, url, date)
+                    self.data[url] = news
+        else:
+            print(f'Failed to get {self.index_url}')
