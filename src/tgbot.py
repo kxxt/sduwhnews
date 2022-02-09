@@ -19,17 +19,17 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 
 def fatal_error(reason):
+    logging.info("sduwhnews/tgbot encountered FATAL error!")
+    logging.error(f"FATAL ERROR: {reason}")
     try:
         bot.send_message(chat_id=TG_CHAT_ID, text=f"Bot fatal error: {reason}")
     except Exception as e:
-        logging.error(
-            f"Fatal error: {reason}.\n" +
-            f"Another error arises while trying to send the previous error to channel.\n Error: {e}"
-        )
+        logging.error(f"Another error arises while trying to send the previous error to channel.\n Error: {e}")
     exit(1)
 
 
 if __name__ == '__main__':
+    logging.info("sduwhnews/tgbot started!")
     crawled = set()
     try:
         if os.path.isfile('crawled.set'):
@@ -42,6 +42,7 @@ if __name__ == '__main__':
             crawled.add(news.url)
             bot.send_message(chat_id=TG_CHAT_ID, text=str(news))
             sleep(3.2)
+        logging.info("sduwhnews/tgbot finished successfully!")
     except Exception as e:
         fatal_error(e)
     finally:
