@@ -1,6 +1,6 @@
 import requests
 from .base import BaseCrawler
-from ..constants import SDUWH_NEWS_URL
+from ..constants import SDUWH_NEWS_URL, SDUWH_NEWS_ROOT_URL
 from ..news import News
 from bs4 import BeautifulSoup
 
@@ -23,6 +23,8 @@ class NewsCrawler(BaseCrawler):
                 if a and span:
                     title = a.attrs['title']
                     url = a.attrs['href']
+                    if not url.startswith('http'):
+                        url = SDUWH_NEWS_ROOT_URL + url
                     date = span.text
                     news = News(title, url, date)
                     self.data[url] = news
