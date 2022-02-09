@@ -37,5 +37,7 @@ class MathCrawler(BaseCrawler):
                         date = span.text
                         news = News(title, url, date)
                         self.data.append(news)
+                    else:
+                        self._add_item_error(index_url, news)
             else:
-                print(f'Failed to get {index_url}')
+                self._add_index_error(index_url)
