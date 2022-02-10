@@ -20,6 +20,9 @@ class BaseCrawler:
     def __len__(self):
         return len(self.data)
 
+    def __index__(self, index):
+        return self.data[index]
+
     @property
     def errors(self):
         return iter(self.__errors)
