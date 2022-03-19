@@ -40,7 +40,11 @@ if __name__ == '__main__':
             if news.url in crawled:
                 continue
             crawled.add(news.url)
-            bot.send_message(chat_id=TG_CHAT_ID, text=str(news))
+            try:
+                bot.send_message(chat_id=TG_CHAT_ID, text=str(news))
+            except Exception as e:
+                crawled.remove(news.url)
+                logging.error(f"Error while sending news to channel.\n Error: {e}")
             sleep(3.2)
         logging.info("sduwhnews/tgbot finished successfully!")
     except Exception as e:
