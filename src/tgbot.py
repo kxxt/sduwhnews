@@ -39,6 +39,7 @@ if __name__ == '__main__':
         for news in crawler:
             if news.url in crawled:
                 continue
+            logging.info(f"Found new news: {news.url}")
             crawled.add(news.url)
             try:
                 bot.send_message(chat_id=TG_CHAT_ID, text=str(news))
